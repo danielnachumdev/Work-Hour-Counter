@@ -1,0 +1,10 @@
+D:\Code\C#\Work Hour Counter\Work Hour Counter\bin\Release\Work Hour Counter.exe.config
+D:\Code\C#\Work Hour Counter\Work Hour Counter\bin\Release\Work Hour Counter.exe
+D:\Code\C#\Work Hour Counter\Work Hour Counter\bin\Release\Work Hour Counter.pdb
+D:\Code\C#\Work Hour Counter\Work Hour Counter\obj\Release\Work Hour Counter.csprojAssemblyReference.cache
+D:\Code\C#\Work Hour Counter\Work Hour Counter\obj\Release\Work_Hour_Counter.MainForm.resources
+D:\Code\C#\Work Hour Counter\Work Hour Counter\obj\Release\Work_Hour_Counter.Properties.Resources.resources
+D:\Code\C#\Work Hour Counter\Work Hour Counter\obj\Release\Work Hour Counter.csproj.GenerateResource.cache
+D:\Code\C#\Work Hour Counter\Work Hour Counter\obj\Release\Work Hour Counter.csproj.CoreCompileInputs.cache
+D:\Code\C#\Work Hour Counter\Work Hour Counter\obj\Release\Work Hour Counter.exe
+D:\Code\C#\Work Hour Counter\Work Hour Counter\obj\Release\Work Hour Counter.pdb
