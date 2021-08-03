@@ -39,6 +39,7 @@ namespace Work_Hour_Counter
             this.WeekCheckBox = new System.Windows.Forms.CheckBox();
             this.MonthCheckBox = new System.Windows.Forms.CheckBox();
             this.YearCheckBox = new System.Windows.Forms.CheckBox();
+            this.CreaditLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // OpenButton
@@ -105,6 +106,7 @@ namespace Work_Hour_Counter
             // WeekCheckBox
             // 
             this.WeekCheckBox.AutoSize = true;
+            this.WeekCheckBox.Enabled = false;
             this.WeekCheckBox.Location = new System.Drawing.Point(429, 347);
             this.WeekCheckBox.Name = "WeekCheckBox";
             this.WeekCheckBox.Size = new System.Drawing.Size(76, 24);
@@ -134,11 +136,20 @@ namespace Work_Hour_Counter
             this.YearCheckBox.Text = "Year";
             this.YearCheckBox.UseVisualStyleBackColor = true;
             // 
+            // CreaditLabel
+            // 
+            this.CreaditLabel.Location = new System.Drawing.Point(642, 386);
+            this.CreaditLabel.Name = "CreaditLabel";
+            this.CreaditLabel.Size = new System.Drawing.Size(146, 47);
+            this.CreaditLabel.TabIndex = 9;
+            this.CreaditLabel.Text = "All rights reserved: Daniel Nachum";
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.CreaditLabel);
             this.Controls.Add(this.YearCheckBox);
             this.Controls.Add(this.MonthCheckBox);
             this.Controls.Add(this.WeekCheckBox);
@@ -171,6 +182,7 @@ namespace Work_Hour_Counter
         private System.Windows.Forms.CheckBox WeekCheckBox;
         private System.Windows.Forms.CheckBox MonthCheckBox;
         private System.Windows.Forms.CheckBox YearCheckBox;
+        private System.Windows.Forms.Label CreaditLabel;
     }
 }
 

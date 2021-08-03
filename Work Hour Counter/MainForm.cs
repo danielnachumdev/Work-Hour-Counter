@@ -148,6 +148,7 @@ namespace Work_Hour_Counter
             g = this.CreateGraphics();
             //testpost();
             //MessageBox.Show(this.Size.ToString());
+            CreaditLabel.Location = new Point(this.Size.Width - CreaditLabel.Size.Width - 30, this.Size.Height - CreaditLabel.Size.Height - 50);
 
         }
         RadioButton[] RadioButtons;
@@ -524,68 +525,111 @@ namespace Work_Hour_Counter
                         IndexOfcPacket = i;
                 }
             }
-            try
+            if(IndexOfcPacket == -1)
             {
-                double Weekly = 0, Monthly = 0, Yearly = 0;
-                byte cWeek;
-                int cdays_to_startofweek = (int)SortedData[IndexOfcPacket].getDate().DayOfWeek;
-                int weekminRange = Math.Min(IndexOfcPacket, cdays_to_startofweek);
-                int weekmaxRange = 7 - cdays_to_startofweek;
-                int cdays_to_startofmonth = (int)SortedData[IndexOfcPacket].getDate().Day;
-                int monthminRange = Math.Min(IndexOfcPacket, cdays_to_startofmonth);
-                int monthmaxRange = DateTime.DaysInMonth(SortedData[IndexOfcPacket].getDate().Year, SortedData[IndexOfcPacket].getDate().Month) - cdays_to_startofmonth;
-                int cdays_to_startofyear = (int)SortedData[IndexOfcPacket].getDate().DayOfYear;
-                int yearminRange = Math.Min(IndexOfcPacket, cdays_to_startofyear);
-                int yearmaxRange = (DateTime.IsLeapYear(SortedData[IndexOfcPacket].getDate().Year) ? 366 : 365) - cdays_to_startofyear;
-                switch (SelectedIndex)
+                int month = dt.Value.Month, year = dt.Value.Year;
+                for (int i = SortedData.Length - 1; i >= 0 && SortedData.Length - 1 - i < 31; i--)
+                    if (SortedData[i].getDate().Year == year && SortedData[i].getDate().Month == month)
+                    {
+                        IndexOfcPacket = i;
+                        break;
+                    }
+            }
+            if(IndexOfcPacket!=-1)
+            {
+                try
                 {
-                    case 1://Day
-                        ExportData.Add(SortedData[IndexOfcPacket].getExportString());
-                        break;
-                    case 2://Week
-                        for (int i = Math.Max(0, IndexOfcPacket - weekminRange); i < Math.Min(SortedData.Length, IndexOfcPacket + weekmaxRange); i++)
-                        {
-                            Weekly += SortedData[i].getTotalTiemValue();
-                            if (DayCheckBox.Checked == true)
-                                ExportData.Add("\t" + SortedData[i].getExportString());
-                        }
-                        ExportData.Insert(0, "Total Hours For this Week " + Weekly);
-                        break;
-                    case 3://Month
-                        for (int i = Math.Max(0, IndexOfcPacket - monthminRange); i < Math.Min(SortedData.Length, IndexOfcPacket + monthmaxRange); i++)
-                        {
-                            if (SortedData[i].getDate().Month != SortedData[IndexOfcPacket].getDate().Month)
-                                continue;
-                            Monthly += SortedData[i].getTotalTiemValue();
-                            if (DayCheckBox.Checked == true)
-                                ExportData.Add("\t\t" + SortedData[i].getExportString());
-                        }
-                        ExportData.Insert(0, "Total Hours For "+SortedData[IndexOfcPacket].getDate().Month+"/"+ SortedData[IndexOfcPacket].getDate().Year + " is " + Monthly);
-                        //DateTime.month
-                        break;
-                    case 4://Year
-                        for (int i = Math.Max(0, IndexOfcPacket - yearminRange); i < Math.Min(SortedData.Length, IndexOfcPacket + yearmaxRange); i++)
-                        {
-                            Yearly += SortedData[i].getTotalTiemValue();
-                            if (DayCheckBox.Checked == true)
-                                ExportData.Add("\t\t\t" + SortedData[i].getExportString());
-                        }
-                        ExportData.Insert(0, "Total Hours For this Year " + Yearly);
-                        break;
-                    case 5://All
-                        break;
+                    double Weekly = 0, Monthly = 0, Yearly = 0;
+                    byte cWeek;
+                    int cdays_to_startofweek = (int)SortedData[IndexOfcPacket].getDate().DayOfWeek;
+                    int weekminRange = Math.Min(IndexOfcPacket, cdays_to_startofweek);
+                    int weekmaxRange = 7 - cdays_to_startofweek;
+                    int days_in_month = DateTime.DaysInMonth(SortedData[IndexOfcPacket].getDate().Year, SortedData[IndexOfcPacket].getDate().Month);
+                    int cdays_to_startofmonth = (int)SortedData[IndexOfcPacket].getDate().Day;
+                    int monthminRange = Math.Min(IndexOfcPacket, cdays_to_startofmonth);
+                    int monthmaxRange = DateTime.DaysInMonth(SortedData[IndexOfcPacket].getDate().Year, SortedData[IndexOfcPacket].getDate().Month) - cdays_to_startofmonth;
+                    int cdays_to_startofyear = (int)SortedData[IndexOfcPacket].getDate().DayOfYear;
+                    int yearminRange = Math.Min(IndexOfcPacket, cdays_to_startofyear);
+                    int yearmaxRange = (DateTime.IsLeapYear(SortedData[IndexOfcPacket].getDate().Year) ? 366 : 365) - cdays_to_startofyear;
+                    switch (SelectedIndex)
+                    {
+                        case 1://Day
+                            ExportData.Add(SortedData[IndexOfcPacket].getExportString());
+                            break;
+                        case 2://Week
+                            for (int i = Math.Max(0, IndexOfcPacket - weekminRange); i < Math.Min(SortedData.Length, IndexOfcPacket + weekmaxRange); i++)
+                            {
+                                Weekly += SortedData[i].getTotalTiemValue();
+                                if (DayCheckBox.Checked == true)
+                                    ExportData.Add("\t" + SortedData[i].getExportString());
+                            }
+                            ExportData.Insert(0, "Total Hours For this Week " + Weekly);
+                            break;
+                        case 3://Month
+                            for (int i = Math.Max(0, IndexOfcPacket - monthminRange); i < Math.Min(SortedData.Length, IndexOfcPacket + monthmaxRange) + (days_in_month == 31 ? 1 : 0); i++)
+                            {
+                                if (i >= SortedData.Length)
+                                    break;
+                                if (SortedData[i].getDate().Month != SortedData[IndexOfcPacket].getDate().Month)
+                                    continue;
+                                Monthly += SortedData[i].getTotalTiemValue();
+                                if (DayCheckBox.Checked == true)
+                                    ExportData.Add("\t\t" + SortedData[i].getExportString());
+                            }
+                            ExportData.Insert(0, "Total Hours For " + SortedData[IndexOfcPacket].getDate().Month + "/" + SortedData[IndexOfcPacket].getDate().Year + " is " + Monthly);
+                            //DateTime.month
+                            break;
+                        case 4://Year
+                            int length = Math.Min(SortedData.Length, IndexOfcPacket + yearmaxRange);
+                            int records_last_month_count = 0;
+                            for (int i = Math.Max(0, IndexOfcPacket - yearminRange); i < length; i++)
+                            {
+                                if (MonthCheckBox.Checked == true)
+                                {
+                                    int sLength = DateTime.DaysInMonth(SortedData[i].getDate().Year, SortedData[i].getDate().Month)+i;
+                                    int cmonth = SortedData[i].getDate().Month;
+                                    int istart = i;
+                                    while (i < SortedData.Length && SortedData[i].getDate().Month == cmonth && i < sLength)
+                                    {
+                                        Monthly+= SortedData[i].getTotalTiemValue();
+                                        if (DayCheckBox.Checked == true)
+                                            ExportData.Add("\t\t\t" + SortedData[i].getExportString());
+                                        i++;
+                                    }
+                                    //i-records_last_month_count== Math.Max(0, IndexOfcPacket - yearminRange)?0:records_last_month_count
+                                    ExportData.Insert(records_last_month_count, "\tTotal Hours For " + cmonth + "/" + SortedData[IndexOfcPacket].getDate().Year + " is " + Monthly);
+                                    records_last_month_count += i - istart + 1;
+                                    Yearly += Monthly;
+                                    Monthly = 0;
+                                    i--;
+                                }
+                                else
+                                {
+                                    Yearly += SortedData[i].getTotalTiemValue();
+                                    if (DayCheckBox.Checked == true)
+                                        ExportData.Add("\t\t\t" + SortedData[i].getExportString());
+                                }
+                            }
+                            ExportData.Insert(0, "Total Hours For this Year " + Yearly);
+                            break;
+                        case 5://All
+                            break;
+                    }
+                    //exporting
+                    SaveFileDialog s = new SaveFileDialog();
+                    if (s.ShowDialog() == DialogResult.OK)
+                    {
+                        File.WriteAllLines(s.FileName + ".txt", ExportData.ToArray());
+                    }
+                }
+                catch (Exception exc)
+                {
+                    MessageBox.Show(exc.ToString());
                 }
             }
-            catch (Exception exc)
+            else
             {
-                MessageBox.Show(exc.ToString());
-            }
-
-            //exporting
-            SaveFileDialog s = new SaveFileDialog();
-            if (s.ShowDialog() == DialogResult.OK)
-            {
-                File.WriteAllLines(s.FileName + ".txt", ExportData.ToArray());
+                MessageBox.Show("There are no record for this month..");
             }
         }
 
