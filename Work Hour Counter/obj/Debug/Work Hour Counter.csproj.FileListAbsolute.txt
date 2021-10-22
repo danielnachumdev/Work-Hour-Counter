@@ -19,3 +19,14 @@ C:\Users\danie\source\repos\danielnachumdev\Work-Hour-Counter\Work Hour Counter\
 C:\Users\danie\source\repos\danielnachumdev\Work-Hour-Counter\Work Hour Counter\obj\Debug\Work Hour Counter.csproj.CoreCompileInputs.cache
 C:\Users\danie\source\repos\danielnachumdev\Work-Hour-Counter\Work Hour Counter\obj\Debug\Work Hour Counter.exe
 C:\Users\danie\source\repos\danielnachumdev\Work-Hour-Counter\Work Hour Counter\obj\Debug\Work Hour Counter.pdb
+C:\Users\User\Source\Repos\danielnachumdev\Work-Hour-Counter\Work Hour Counter\bin\Debug\Work Hour Counter.exe.config
+C:\Users\User\Source\Repos\danielnachumdev\Work-Hour-Counter\Work Hour Counter\bin\Debug\Work Hour Counter.exe
+C:\Users\User\Source\Repos\danielnachumdev\Work-Hour-Counter\Work Hour Counter\bin\Debug\Work Hour Counter.pdb
+C:\Users\User\Source\Repos\danielnachumdev\Work-Hour-Counter\Work Hour Counter\obj\Debug\Work Hour Counter.csproj.AssemblyReference.cache
+C:\Users\User\Source\Repos\danielnachumdev\Work-Hour-Counter\Work Hour Counter\obj\Debug\Work Hour Counter.csproj.SuggestedBindingRedirects.cache
+C:\Users\User\Source\Repos\danielnachumdev\Work-Hour-Counter\Work Hour Counter\obj\Debug\Work_Hour_Counter.MainForm.resources
+C:\Users\User\Source\Repos\danielnachumdev\Work-Hour-Counter\Work Hour Counter\obj\Debug\Work_Hour_Counter.Properties.Resources.resources
+C:\Users\User\Source\Repos\danielnachumdev\Work-Hour-Counter\Work Hour Counter\obj\Debug\Work Hour Counter.csproj.GenerateResource.cache
+C:\Users\User\Source\Repos\danielnachumdev\Work-Hour-Counter\Work Hour Counter\obj\Debug\Work Hour Counter.csproj.CoreCompileInputs.cache
+C:\Users\User\Source\Repos\danielnachumdev\Work-Hour-Counter\Work Hour Counter\obj\Debug\Work Hour Counter.exe
+C:\Users\User\Source\Repos\danielnachumdev\Work-Hour-Counter\Work Hour Counter\obj\Debug\Work Hour Counter.pdb

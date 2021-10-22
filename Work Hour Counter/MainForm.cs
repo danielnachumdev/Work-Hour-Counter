@@ -20,19 +20,19 @@ namespace Work_Hour_Counter
             InitializeComponent();
         }
         DateTimePicker dt;
-        private void setup_new_form_size(Form this_form)
+        private void setup_new_form_size()
         {
-            Size ScreenSize = Screen.FromControl(this_form).Bounds.Size;
+            Size ScreenSize = Screen.FromControl(this).Bounds.Size;
             int ASPECT_A = 10, ASPECT_B = 5, SCALE = 16; //aspect ration A/B as in 16/9
             double
                 NEW_HEIGHT = ScreenSize.Height / SCALE * ASPECT_A,
                 NEW_WIDTH = ScreenSize.Width / SCALE * ASPECT_B;
-            this_form.Height = (int)NEW_HEIGHT;
-            this_form.Width = 700;//(int)NEW_WIDTH;
-            this_form.MaximizeBox = false;
-            this_form.MinimumSize = this_form.Size;
-            this_form.MaximumSize = this_form.Size;
-            this_form.Location = new Point((ScreenSize.Width - this_form.Width) / 2, (ScreenSize.Height - this_form.Height) / 2);
+            this.Height = (int)NEW_HEIGHT;
+            this.Width = 700;//(int)NEW_WIDTH;
+            this.MaximizeBox = false;
+            this.MinimumSize = this.Size;
+            this.MaximumSize = this.Size;
+            this.Location = new Point((ScreenSize.Width - this.Width) / 2, (ScreenSize.Height - this.Height) / 2);
         }
         private void initialize_global_variables()
         {
@@ -42,6 +42,7 @@ namespace Work_Hour_Counter
         private void initialize_controls_properties()
         {
             PathLabel.Text = "";
+            PathLabel.Visible = false;
         }
         private void color_panels()
         {
@@ -52,7 +53,7 @@ namespace Work_Hour_Counter
         }
         private void MainForm_Load(object sender, EventArgs e)
         {
-            setup_new_form_size(this);
+            setup_new_form_size();
             initialize_global_variables();
             initialize_controls_properties();
             //local variables

@@ -7,3 +7,14 @@ D:\Code\C#\Work Hour Counter\Work Hour Counter\obj\Release\Work Hour Counter.csp
 D:\Code\C#\Work Hour Counter\Work Hour Counter\obj\Release\Work Hour Counter.csproj.CoreCompileInputs.cache
 D:\Code\C#\Work Hour Counter\Work Hour Counter\obj\Release\Work Hour Counter.exe
 D:\Code\C#\Work Hour Counter\Work Hour Counter\obj\Release\Work Hour Counter.pdb
+C:\Users\User\Source\Repos\danielnachumdev\Work-Hour-Counter\Work Hour Counter\bin\Release\Work Hour Counter.exe.config
+C:\Users\User\Source\Repos\danielnachumdev\Work-Hour-Counter\Work Hour Counter\bin\Release\Work Hour Counter.exe
+C:\Users\User\Source\Repos\danielnachumdev\Work-Hour-Counter\Work Hour Counter\bin\Release\Work Hour Counter.pdb
+C:\Users\User\Source\Repos\danielnachumdev\Work-Hour-Counter\Work Hour Counter\obj\Release\Work Hour Counter.csproj.SuggestedBindingRedirects.cache
+C:\Users\User\Source\Repos\danielnachumdev\Work-Hour-Counter\Work Hour Counter\obj\Release\Work_Hour_Counter.MainForm.resources
+C:\Users\User\Source\Repos\danielnachumdev\Work-Hour-Counter\Work Hour Counter\obj\Release\Work_Hour_Counter.Properties.Resources.resources
+C:\Users\User\Source\Repos\danielnachumdev\Work-Hour-Counter\Work Hour Counter\obj\Release\Work Hour Counter.csproj.GenerateResource.cache
+C:\Users\User\Source\Repos\danielnachumdev\Work-Hour-Counter\Work Hour Counter\obj\Release\Work Hour Counter.csproj.CoreCompileInputs.cache
+C:\Users\User\Source\Repos\danielnachumdev\Work-Hour-Counter\Work Hour Counter\obj\Release\Work Hour Counter.exe
+C:\Users\User\Source\Repos\danielnachumdev\Work-Hour-Counter\Work Hour Counter\obj\Release\Work Hour Counter.pdb
+C:\Users\User\source\repos\danielnachumdev\Work-Hour-Counter\Work Hour Counter\obj\Release\Work Hour Counter.csproj.AssemblyReference.cache
