@@ -44,9 +44,10 @@ namespace Work_Hour_Counter
             // 
             // OpenButton
             // 
-            this.OpenButton.Location = new System.Drawing.Point(236, 68);
+            this.OpenButton.Location = new System.Drawing.Point(11, 11);
+            this.OpenButton.Margin = new System.Windows.Forms.Padding(2);
             this.OpenButton.Name = "OpenButton";
-            this.OpenButton.Size = new System.Drawing.Size(112, 41);
+            this.OpenButton.Size = new System.Drawing.Size(75, 27);
             this.OpenButton.TabIndex = 0;
             this.OpenButton.Text = "Open";
             this.OpenButton.UseVisualStyleBackColor = true;
@@ -54,9 +55,10 @@ namespace Work_Hour_Counter
             // 
             // SaveButton
             // 
-            this.SaveButton.Location = new System.Drawing.Point(236, 168);
+            this.SaveButton.Location = new System.Drawing.Point(90, 11);
+            this.SaveButton.Margin = new System.Windows.Forms.Padding(2);
             this.SaveButton.Name = "SaveButton";
-            this.SaveButton.Size = new System.Drawing.Size(75, 58);
+            this.SaveButton.Size = new System.Drawing.Size(50, 38);
             this.SaveButton.TabIndex = 1;
             this.SaveButton.Text = "Save";
             this.SaveButton.UseVisualStyleBackColor = true;
@@ -64,9 +66,10 @@ namespace Work_Hour_Counter
             // 
             // SaveAsButton
             // 
-            this.SaveAsButton.Location = new System.Drawing.Point(356, 219);
+            this.SaveAsButton.Location = new System.Drawing.Point(146, 12);
+            this.SaveAsButton.Margin = new System.Windows.Forms.Padding(2);
             this.SaveAsButton.Name = "SaveAsButton";
-            this.SaveAsButton.Size = new System.Drawing.Size(116, 57);
+            this.SaveAsButton.Size = new System.Drawing.Size(77, 37);
             this.SaveAsButton.TabIndex = 2;
             this.SaveAsButton.Text = "Save As";
             this.SaveAsButton.UseVisualStyleBackColor = true;
@@ -75,17 +78,19 @@ namespace Work_Hour_Counter
             // PathLabel
             // 
             this.PathLabel.AutoSize = true;
-            this.PathLabel.Location = new System.Drawing.Point(614, 121);
+            this.PathLabel.Location = new System.Drawing.Point(-4, -4);
+            this.PathLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.PathLabel.Name = "PathLabel";
-            this.PathLabel.Size = new System.Drawing.Size(80, 20);
+            this.PathLabel.Size = new System.Drawing.Size(54, 13);
             this.PathLabel.TabIndex = 3;
             this.PathLabel.Text = "pathLabel";
             // 
             // ExportButton
             // 
-            this.ExportButton.Location = new System.Drawing.Point(235, 299);
+            this.ExportButton.Location = new System.Drawing.Point(157, 194);
+            this.ExportButton.Margin = new System.Windows.Forms.Padding(2);
             this.ExportButton.Name = "ExportButton";
-            this.ExportButton.Size = new System.Drawing.Size(99, 54);
+            this.ExportButton.Size = new System.Drawing.Size(66, 35);
             this.ExportButton.TabIndex = 4;
             this.ExportButton.Text = "Export";
             this.ExportButton.UseVisualStyleBackColor = true;
@@ -96,9 +101,10 @@ namespace Work_Hour_Counter
             this.DayCheckBox.AutoSize = true;
             this.DayCheckBox.Checked = true;
             this.DayCheckBox.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.DayCheckBox.Location = new System.Drawing.Point(417, 316);
+            this.DayCheckBox.Location = new System.Drawing.Point(278, 205);
+            this.DayCheckBox.Margin = new System.Windows.Forms.Padding(2);
             this.DayCheckBox.Name = "DayCheckBox";
-            this.DayCheckBox.Size = new System.Drawing.Size(63, 24);
+            this.DayCheckBox.Size = new System.Drawing.Size(45, 17);
             this.DayCheckBox.TabIndex = 5;
             this.DayCheckBox.Text = "Day";
             this.DayCheckBox.UseVisualStyleBackColor = true;
@@ -107,9 +113,10 @@ namespace Work_Hour_Counter
             // 
             this.WeekCheckBox.AutoSize = true;
             this.WeekCheckBox.Enabled = false;
-            this.WeekCheckBox.Location = new System.Drawing.Point(429, 347);
+            this.WeekCheckBox.Location = new System.Drawing.Point(286, 226);
+            this.WeekCheckBox.Margin = new System.Windows.Forms.Padding(2);
             this.WeekCheckBox.Name = "WeekCheckBox";
-            this.WeekCheckBox.Size = new System.Drawing.Size(76, 24);
+            this.WeekCheckBox.Size = new System.Drawing.Size(55, 17);
             this.WeekCheckBox.TabIndex = 6;
             this.WeekCheckBox.Text = "Week";
             this.WeekCheckBox.UseVisualStyleBackColor = true;
@@ -118,9 +125,10 @@ namespace Work_Hour_Counter
             // 
             this.MonthCheckBox.AutoSize = true;
             this.MonthCheckBox.Enabled = false;
-            this.MonthCheckBox.Location = new System.Drawing.Point(429, 378);
+            this.MonthCheckBox.Location = new System.Drawing.Point(286, 246);
+            this.MonthCheckBox.Margin = new System.Windows.Forms.Padding(2);
             this.MonthCheckBox.Name = "MonthCheckBox";
-            this.MonthCheckBox.Size = new System.Drawing.Size(80, 24);
+            this.MonthCheckBox.Size = new System.Drawing.Size(56, 17);
             this.MonthCheckBox.TabIndex = 7;
             this.MonthCheckBox.Text = "Month";
             this.MonthCheckBox.UseVisualStyleBackColor = true;
@@ -129,26 +137,28 @@ namespace Work_Hour_Counter
             // 
             this.YearCheckBox.AutoSize = true;
             this.YearCheckBox.Enabled = false;
-            this.YearCheckBox.Location = new System.Drawing.Point(417, 409);
+            this.YearCheckBox.Location = new System.Drawing.Point(278, 266);
+            this.YearCheckBox.Margin = new System.Windows.Forms.Padding(2);
             this.YearCheckBox.Name = "YearCheckBox";
-            this.YearCheckBox.Size = new System.Drawing.Size(69, 24);
+            this.YearCheckBox.Size = new System.Drawing.Size(48, 17);
             this.YearCheckBox.TabIndex = 8;
             this.YearCheckBox.Text = "Year";
             this.YearCheckBox.UseVisualStyleBackColor = true;
             // 
             // CreaditLabel
             // 
-            this.CreaditLabel.Location = new System.Drawing.Point(642, 386);
+            this.CreaditLabel.Location = new System.Drawing.Point(428, 251);
+            this.CreaditLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.CreaditLabel.Name = "CreaditLabel";
-            this.CreaditLabel.Size = new System.Drawing.Size(146, 47);
+            this.CreaditLabel.Size = new System.Drawing.Size(97, 31);
             this.CreaditLabel.TabIndex = 9;
             this.CreaditLabel.Text = "All rights reserved: Daniel Nachum";
             // 
             // MainForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(533, 292);
             this.Controls.Add(this.CreaditLabel);
             this.Controls.Add(this.YearCheckBox);
             this.Controls.Add(this.MonthCheckBox);
@@ -160,6 +170,7 @@ namespace Work_Hour_Counter
             this.Controls.Add(this.SaveButton);
             this.Controls.Add(this.OpenButton);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Work Hour Counter";

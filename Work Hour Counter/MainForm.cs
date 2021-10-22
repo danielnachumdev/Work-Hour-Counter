@@ -20,70 +20,101 @@ namespace Work_Hour_Counter
             InitializeComponent();
         }
         DateTimePicker dt;
+        private void setup_new_form_size(Form this_form)
+        {
+            Size ScreenSize = Screen.FromControl(this_form).Bounds.Size;
+            int ASPECT_A = 10, ASPECT_B = 5, SCALE = 16; //aspect ration A/B as in 16/9
+            double
+                NEW_HEIGHT = ScreenSize.Height / SCALE * ASPECT_A,
+                NEW_WIDTH = ScreenSize.Width / SCALE * ASPECT_B;
+            this_form.Height = (int)NEW_HEIGHT;
+            this_form.Width = 700;//(int)NEW_WIDTH;
+            this_form.MaximizeBox = false;
+            this_form.MinimumSize = this_form.Size;
+            this_form.MaximumSize = this_form.Size;
+            this_form.Location = new Point((ScreenSize.Width - this_form.Width) / 2, (ScreenSize.Height - this_form.Height) / 2);
+        }
+        private void initialize_global_variables()
+        {
+            cPacket = DateTime.Now.Date.ToString("dd/MM/yyyy") + " ";
+            SquareSize = new Size((int)((double)this.Width / 800 * 50), (int)((double)this.Width / 900 * 50));
+        }
+        private void initialize_controls_properties()
+        {
+            PathLabel.Text = "";
+        }
+        private void color_panels()
+        {
+            foreach (Control control in this.Controls)
+                if (control is Panel)
+                    if (control.BackColor == Color.FromName("control"))
+                        control.BackColor = Color.DarkRed;
+        }
         private void MainForm_Load(object sender, EventArgs e)
         {
-            Size ScreenSize = Screen.FromControl(this).Bounds.Size;
-            int aspectA = 10, aspectB = 5,aspectConst=16; //aspect ration A/B as in 16/9
-            double 
-                nHeight = ScreenSize.Height / aspectConst * aspectA,
-                nWidth = ScreenSize.Width/aspectConst*aspectB;
-            this.Height = (int)nHeight;
-            this.Width = 700;//(int)nWidth;
-            this.MaximizeBox = false;
-            this.MinimumSize = this.Size;
-            this.MaximumSize = this.Size;
-            SquareSize = new Size((int)((double)this.Width / 800 * 50), (int)((double)this.Width / 900 * 50));
-            this.Location = new Point((ScreenSize.Width - this.Width) / 2, (ScreenSize.Height - this.Height) / 2);
-            PathLabel.Text = "";
-            cPacket = DateTime.Now.Date.ToString("dd/MM/yyyy") + " ";
+            setup_new_form_size(this);
+            initialize_global_variables();
+            initialize_controls_properties();
+            //local variables
             int padding = 10;
+            Size default_button_size = new Size((this.Width / 3 - padding * 7 / 2) / 3, 30);
 
-            //Buttons
-
-            Point OSAnchor = new Point(this.Width / 3 * 2 + padding, padding);
-            OpenButton.Location = OSAnchor;
-            OpenButton.Size = new Size((this.Width / 3 - padding * 7 / 2) / 3, 30);
-            SaveButton.Size = new Size((this.Width / 3 - padding * 7 / 2) / 3, 30);
-            SaveAsButton.Size = new Size((this.Width / 3 - padding * 7 / 2) / 3, 30);
-            SaveButton.Location = new Point(OpenButton.Location.X + OpenButton.Width, OSAnchor.Y);
-            SaveAsButton.Location = new Point(SaveButton.Location.X + SaveButton.Width, OSAnchor.Y);
-            PathLabel.Location = new Point(OSAnchor.X, OSAnchor.Y + 40);
-
-            //DateTimePicker & Controls
-            Point DTAnchor = new Point(this.Width / 3 * 2 + padding, padding+70);
+            #region Panels
+            #region Open/Save
+            Panel os_panel = new Panel();//Open Save panel
+            os_panel.Name = "os_panel";
+            os_panel.Location = new Point(this.Width / 3 * 2 + padding, padding);
+            os_panel.Size = new Size(os_panel.Width, default_button_size.Height);
+            OpenButton.Size = default_button_size;
+            SaveButton.Size = default_button_size;
+            SaveAsButton.Size = default_button_size;
+            OpenButton.Location = new Point(0, 0);
+            SaveButton.Location = new Point(OpenButton.Location.X + OpenButton.Width, 0);
+            SaveAsButton.Location = new Point(SaveButton.Location.X + SaveButton.Width, 0);
+            //PathLabel.Location = new Point(0, OpenButton.Height);
+            os_panel.Controls.AddRange(new Control[] { OpenButton, SaveButton, SaveAsButton });
+            #endregion
+            this.Controls.Add(os_panel);
+            #region DateTime
+            Panel dt_panel = new Panel();//Date Time panel
+            dt_panel.Name = "dt_panel";
+            dt_panel.Location = new Point(this.Width / 3 * 2 + padding, os_panel.Location.Y + os_panel.Height + padding);
 
             dt = new DateTimePicker();
-            dt.Location = DTAnchor;
-            dt.Size = new Size(this.Width / 3 - padding * 2-15, 30);
+            dt.Size = new Size(this.Width / 3 - padding * 2 - 15, 30);
             dt.ValueChanged += new EventHandler(dateTimePicker_ValueChanged);
-            this.Controls.Add(dt);
+                    
             Button PreviousButton = new Button();
             PreviousButton.Text = "Previous Day";
-            PreviousButton.Size = new Size((this.Width / 3 - padding * 7/2) / 2, 30);
-            PreviousButton.Location = new Point(DTAnchor.X, DTAnchor.Y + 30);
+            PreviousButton.Size = new Size(default_button_size.Width * 3 / 2, default_button_size.Height);
             PreviousButton.Click += new EventHandler(PreviousButton_Click);
-            this.Controls.Add(PreviousButton);
+            PreviousButton.BackColor = Color.FromName("control");
+            
             Button NextButton = new Button();
             NextButton.Text = "Next Day";
-            NextButton.Size = new Size((this.Width / 3 - padding * 7/2) / 2, 30);
-            NextButton.Location = new Point(PreviousButton.Location.X + PreviousButton.Width, DTAnchor.Y + 30);
+            NextButton.Size = new Size(default_button_size.Width * 3 / 2, default_button_size.Height);
             NextButton.Click += new EventHandler(NextButton_Click);
-            this.Controls.Add(NextButton);
+            NextButton.BackColor = Color.FromName("control");
 
-            ExportButton.Location = new Point(PreviousButton.Location.X, PreviousButton.Location.Y + PreviousButton.Height + padding * 2);
-            //ExportButton.Size = new Size(this.Width/3/2-padding*2,this.Height/3/2-padding*2);
-            ExportButton.Size = new Size(this.Width / 3 - padding * 7 / 2, 30);
+            dt.Location = new Point(0, 0);
+            PreviousButton.Location = new Point(0, dt.Height + padding);
+            NextButton.Location = new Point(PreviousButton.Location.X + PreviousButton.Width, PreviousButton.Location.Y);
+
+            dt_panel.Size = new Size(dt_panel.Width, dt.Height + padding + default_button_size.Height);
+            dt_panel.Controls.AddRange(new Control[] { dt, PreviousButton, NextButton });
+            #endregion
+            this.Controls.Add(dt_panel);
+            #region Select Area
+            Panel sa_panel = new Panel();
+            sa_panel.Name = "sa_panel";
+            sa_panel.Location = new Point(1,1);
+            sa_panel.Size = new Size(this.Width / 3 * 2 - padding *2, this.Height - padding * 2 - 20);
+
+            //sa_panel.Location = new Point(0, 0);
 
             //Preview Area
-
             SelectArea = new Rectangle(new Point(padding, padding), new Size(this.Width / 3 * 2 - padding * 2, this.Height - padding * 2 - 20));
-            PreviewLabel = new Label();
-            PreviewLabel.Text = "Preview";
-            PreviewLabel.Font = new Font("Arial", 15);
-            PreviewLabel.Location = new Point(this.Width / 3 * 2 + padding, this.Height / 3 + padding);
-            PreviewLabel.AutoSize = false;
-            PreviewLabel.Size = new Size(this.Width / 3 - padding * 2, this.Height / 3 * 2 - padding * 2);
-            this.Controls.Add(PreviewLabel);
+            
             for (int hour = 0; hour < 24; hour++)
             {
                 for (int quarter = 0; quarter < 4; quarter++)
@@ -95,15 +126,14 @@ namespace Work_Hour_Counter
                     l.MouseClick += new MouseEventHandler(Label_MouseClick);
                     l.Name = "Label" + hour + "." + quarter;
                     l.Location = new Point(
-                                SelectArea.X + 50 + quarter * (SquareSize.Width + 1) + (hour > 11 ? SelectArea.Width / 2 : 0),
-                                SelectArea.Y + (hour % 12 * SelectArea.Height / 12));
+                                /*SelectArea.X + */50 + quarter * (SquareSize.Width + 1) + (hour > 11 ? SelectArea.Width / 2 : 0),
+                                /*SelectArea.Y + */(hour % 12 * SelectArea.Height / 12));
                     labels[quarter, hour] = l;
-                    this.Controls.Add(l);
+            sa_panel.Controls.Add(l);
                 }
             }
 
             //Text Labels
-
             for (int hour = 0; hour < 24; hour++)
             {
                 Label l = new Label();
@@ -115,8 +145,17 @@ namespace Work_Hour_Counter
                     SelectArea.Y + (hour % 12 * SelectArea.Height / 12));
                 l.AutoSize = true;
                 l.MouseClick += new MouseEventHandler(TextLabel_MouseClick);
-                this.Controls.Add(l);
+                sa_panel.Controls.Add(l);
             }
+            #endregion
+            this.Controls.Add(sa_panel);
+            #region Export
+            Panel ex_panel = new Panel();
+            ex_panel.Name = "ex_panel";
+            ex_panel.Location = new Point(dt_panel.Location.X , dt_panel.Location.Y + dt_panel.Height + padding);
+
+            ExportButton.Location = new Point(0, 0);
+            ExportButton.Size = new Size(this.Width / 3 - padding * 7 / 2, 30);
 
             //RadioButtons
             int[] names = new int[5] { 1, 2, 3, 4, 5 };
@@ -131,21 +170,38 @@ namespace Work_Hour_Counter
                     r.Enabled = false;
                 r.Name = "RadioButton" + names[num];
                 r.Text = texts[num];
-                r.Location = new Point(this.Width / 3 * 2 +padding , ExportButton.Location.Y+ExportButton.Size.Height+num*20);
+                r.Location = new Point(padding, ExportButton.Height+padding+ num * r.Size.Height);
                 r.Font = new Font("arial", 12);
                 r.AutoSize = true;
                 r.BringToFront();
                 r.Visible = true;
                 r.CheckedChanged += new EventHandler(radioButton_CheckedChanged);
                 RadioButtons[num] = r;
-                this.Controls.Add(r);
+                ex_panel.Controls.Add(r);
             }
-            DayCheckBox.Location = new Point(this.Width / 6 * 5, RadioButtons[1].Location.Y);
-            WeekCheckBox.Location = new Point(this.Width / 6 * 5, RadioButtons[2].Location.Y);
-            MonthCheckBox.Location = new Point(this.Width / 6 * 5, RadioButtons[3].Location.Y);
-            YearCheckBox.Location = new Point(this.Width / 6 * 5, RadioButtons[4].Location.Y);
 
+            DayCheckBox.Location = new Point(dt_panel.Width/2, RadioButtons[1].Location.Y);
+            WeekCheckBox.Location = new Point(dt_panel.Width / 2, RadioButtons[2].Location.Y);
+            MonthCheckBox.Location = new Point(dt_panel.Width / 2, RadioButtons[3].Location.Y);
+            YearCheckBox.Location = new Point(dt_panel.Width / 2, RadioButtons[4].Location.Y);
+            
+            ex_panel.Size=new Size(dt_panel.Width, RadioButtons[0].Size.Height * (names.Length+2)+padding);
+            ex_panel.Controls.AddRange(new Control[] { ExportButton,DayCheckBox,WeekCheckBox,MonthCheckBox,YearCheckBox });
+            #endregion
+            this.Controls.Add(ex_panel);
+            #endregion
+            PreviewLabel = new Label();
+            PreviewLabel.Text = "Preview";
+            PreviewLabel.Font = new Font("Arial", this.Size.Width/100*2);
+            PreviewLabel.Location = new Point(ex_panel.Location.X,ex_panel.Location.Y+ex_panel.Height+padding);
+            PreviewLabel.AutoSize = false;
+            PreviewLabel.Size = new Size(this.Width / 3 - padding * 2, this.Height / 3 * 2 - padding * 2);
+            this.Controls.Add(PreviewLabel);
+            //assigns the graphics object
             g = this.CreateGraphics();
+            //color all of the difrrent panels so it will be easier to see each of them
+            //color_panels();
+
             //testpost();
             //MessageBox.Show(this.Size.ToString());
             CreaditLabel.Location = new Point(this.Size.Width - CreaditLabel.Size.Width - 30, this.Size.Height - CreaditLabel.Size.Height - 50);
@@ -167,11 +223,13 @@ namespace Work_Hour_Counter
         Color SelectedColor = Color.Red, UnSelectedColor = Color.Gray;
         private void MainForm_Paint(object sender, PaintEventArgs e)
         {
-            g.DrawLine(new Pen(BlackBrush), new Point(this.Width / 3 * 2, 0), new Point(this.Width / 3 * 2, this.Height));
+            
+            /*g.DrawLine(new Pen(BlackBrush), new Point(this.Width / 3 * 2, 0), new Point(this.Width / 3 * 2, this.Height));
             g.DrawLine(new Pen(BlackBrush), new Point(this.Width / 3 * 2, this.Height / 3), new Point(this.Width, this.Height / 3));
             g.DrawLine(new Pen(BlackBrush), new Point(this.Width / 3 * 2, 70), new Point(this.Width, 70));
             g.DrawLine(new Pen(BlackBrush), new Point(this.Width/3*2,this.Height/3/2), new Point(this.Width,this.Height/3/2));
             g.DrawString("See Into", new Font("Arial", 15), BlackBrush, new Point(this.Width / 6 * 5, ExportButton.Location.Y+ExportButton.Size.Height));
+*/
             /*
             for (int hour = 0; hour < 24; hour++)
             {
